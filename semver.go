@@ -22,6 +22,15 @@ func Branch() []byte {
 	return branch
 }
 
+func AllTags() []byte {
+	branch, err := exec.Command("git", "--no-pager", "tag", "--list").Output()
+	if err != nil {
+		log.Fatal(err)
+	}
+	return branch
+}
+
+
 // func Log() []byte {
 // 	log, err := exec.Command("git", "--no-pager", "log", "--oneline").Output()
 // 	if err != nil {
@@ -32,16 +41,18 @@ func Branch() []byte {
 
 // - [ ]  log
 // - [x] current branch
-// - [ ]  tags
+// - [x]  tags
 // - [ ]  count commits
 // - [ ]  latest tag
 // - [ ]  commits since tag
 
 func main() {
 	gitStatus := Status()
-	fmt.Printf(string(gitStatus))
+	fmt.Printf(string(gitStatus) + "\n")
 
 	branch := Branch()
-	fmt.Printf(string(branch))
+	fmt.Printf(string(branch) + "\n")
 
+	tags := AllTags()
+	fmt.Printf(string(tags) + "\n")
 }

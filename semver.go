@@ -7,29 +7,46 @@ import (
 )
 
 func Status() []byte {
-	status, err := exec.Command("git", "status").Output()
+	result, err := exec.Command("git", "status").Output()
 	if err != nil {
 		log.Fatal(err)
 	}
-	return status
+	return result
 }
 
 func Branch() []byte {
-	branch, err := exec.Command("git", "--no-pager", "branch", "--show-current").Output()
+	result, err := exec.Command("git", "--no-pager", "branch", "--show-current").Output()
 	if err != nil {
 		log.Fatal(err)
 	}
-	return branch
+	return result
 }
 
 func AllTags() []byte {
-	branch, err := exec.Command("git", "--no-pager", "tag", "--list").Output()
+	result, err := exec.Command("git", "--no-pager", "tag", "--list").Output()
 	if err != nil {
 		log.Fatal(err)
 	}
-	return branch
+	return result
 }
 
+func LatestTag() []byte {
+	result, err := exec.Command("git", "describe", "--abbrev=0", "--tags").Output()
+	if err != nil {
+		log.Fatal(err)
+	}
+	return result
+}
+
+func CommitsSinceTag(tag string) []byte {
+	// result, err := exec.Command("git", "rev-list", "--count", tag + "..HEAD").Output()
+	fmt.Printf("HEAD", "^"+tag)
+	result, err := exec.Command("git", "rev-list", "--count", "HEAD", "^"+tag).Output()
+	if err != nil {
+		log.Fatal(err)
+	}
+	return result
+}
 
 // func Log() []byte {
 // 	log, err := exec.Command("git", "--no-pager", "log", "--oneline").Output()
@@ -39,20 +56,20 @@ func AllTags() []byte {
 // 	return log
 // }
 
-// - [ ]  log
-// - [x] current branch
-// - [x]  tags
-// - [ ]  count commits
-// - [ ]  latest tag
-// - [ ]  commits since tag
-
-func main() {
-	gitStatus := Status()
-	fmt.Printf(string(gitStatus) + "\n")
-
-	branch := Branch()
-	fmt.Printf(string(branch) + "\n")
-
-	tags := AllTags()
-	fmt.Printf(string(tags) + "\n")
-}
+//func main() {
+//	gitStatus := Status()
+//	fmt.Printf(string(gitStatus) + "\n")
+//
+//	branch := Branch()
+//	fmt.Printf(string(branch) + "\n")
+//
+//	tags := AllTags()
+//	fmt.Printf(string(tags) + "\n")
+//
+//	latestTag := LatestTag()
+//	fmt.Printf(string(latestTag) + "\n")
+//
+//	commitsSinceTag := CommitsSinceTag(string(latestTag))
+//	fmt.Printf(string(commitsSinceTag) + "\n")
+//
+//}

@@ -8,6 +8,20 @@ go test
 
 ```
 
+## ToDo
+
+- [ ] log
+- [x] current branch
+- [x] tags
+- [ ] count commits
+- [x] latest tag
+- [ ] commits since tag
+- [ ] unit tests
+- [ ] use git module
+  - [x] show git log
+- [ ] make it a cli with `github.com/urfave/cli/v2`
+- [ ] golinting
+
 ## Ref
 
 - https://go.dev/blog/using-go-modules

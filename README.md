@@ -3,8 +3,15 @@
 ## Development
 
 ```shell
+go mod tidy
 go run semver.go
+
 go test
+golangci-lint run # Golang lint tool: https://github.com/golangci/golangci-lint 
+go build
+go install
+
+```
 
 ```
 
@@ -20,7 +27,33 @@ go test
 - [ ] use git module
   - [x] show git log
 - [ ] make it a cli with `github.com/urfave/cli/v2`
-- [ ] golinting
+- [x] golinting
+
+## Hackaton Semver cli
+
+Prep:
+ 
+- [ ] Cli basics
+- [ ] Linting
+- [ ] Unit test: test repo
+- [ ] Unittest: example
+- [ ] Create go files/modules
+- [ ] Create structs
+- [ ] eigen idee van functies ()
+
+Prep collega's
+
+- [ ] Go function
+- [ ] Go struct
+
+Agenda
+- Intro: idee, show basics
+- Design functions (allemaal)
+  - input, output, go file, pseudo algorithm
+- Tweetallen: kies een functie
+  - check
+    - unit tests
+    - linting
 
 ## Ref
 

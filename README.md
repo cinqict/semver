@@ -13,8 +13,6 @@ go install
 
 ```
 
-```
-
 ## ToDo
 
 - [ ] log
@@ -33,13 +31,13 @@ go install
 
 Prep:
  
+- [ ] eigen idee van functies ()
 - [ ] Cli basics
 - [ ] Linting
 - [ ] Unit test: test repo
 - [ ] Unittest: example
 - [ ] Create go files/modules
 - [ ] Create structs
-- [ ] eigen idee van functies ()
 
 Prep collega's
 
@@ -59,3 +57,4 @@ Agenda
 
 - https://go.dev/blog/using-go-modules
 - https://pkg.go.dev/os/exec#Cmd.Output
+

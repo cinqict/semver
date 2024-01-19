@@ -6,12 +6,10 @@ import (
 
 func main() {
 	repo := GetRepo(".")
-	tags := GetAllTags(repo)
-	fmt.Printf("Highest SemVer tag: %v\n", tags)
-	for _, tag := range tags {
-		fmt.Printf("Tag: %s\n", tag)
-	}
-	highestSemver := GetHighestSemVer(tags)
+	allTags := GetAllTags(repo)
+	fmt.Printf("%v\n", allTags)
+
+	highestSemver := GetHighestSemVer(repo)
 	fmt.Printf("Highest SemVer tag: %s\n", highestSemver)
 
 	//// Gets the HEAD history from HEAD, just like this command:

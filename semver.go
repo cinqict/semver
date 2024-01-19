@@ -1,8 +1,12 @@
 package main
 
-import "golang.org/x/mod/semver"
+import (
+	"github.com/go-git/go-git/v5"
+	"golang.org/x/mod/semver"
+)
 
-func GetHighestSemVer(tags []string) string {
+func GetHighestSemVer(repo *git.Repository) string {
+	tags := GetAllTags(repo)
 	semver.Sort(tags)
 	return tags[0]
 }

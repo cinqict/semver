@@ -2,12 +2,25 @@
 
 ## Development
 
+### Run tests
+
+```shell
+# Unit tests
+go test
+
+# Linting
+golangci-lint run # Golang lint tool: https://github.com/golangci/golangci-lint 
+
+```
+
 ```shell
 go mod tidy
 go run semver.go
+```
 
-go test
-golangci-lint run # Golang lint tool: https://github.com/golangci/golangci-lint 
+### Build
+
+```shell
 go build
 go install
 

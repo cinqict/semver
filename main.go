@@ -9,8 +9,9 @@ func main() {
 	allTags := GetAllTags(repo)
 	fmt.Printf("%v\n", allTags)
 
-	highestSemver := GetHighestSemVer(repo)
-	fmt.Printf("Highest SemVer tag: %s\n", highestSemver)
+	v := NewSemVer(1, 2, 0)
+	vv := v.String()
+	fmt.Printf("SemVer: %v\n", vv)
 
 	//// Gets the HEAD history from HEAD, just like this command:
 	//klog.Infoln("git log")

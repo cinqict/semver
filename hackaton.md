@@ -5,13 +5,14 @@
 
 Prep:
 
-- [ ] eigen idee van functies ()
+- [x] eigen idee van functies ()
 - [ ] Cli basics
 - [.] Linting
-- [ ] Unit test: test repo
-- [ ] Unittest: example
+- [x] Unit test: test repo
+- [x] Unittest: example
 - [x] Create go files
-- [ ] Create structs
+- [x] Create structs
+- [ ] op cinq github
 - design: @Bouke hoe doen jullie developers dat?
 
 ## Prep collega's
@@ -35,6 +36,7 @@ Prep:
     - run tests
     - trigger on pr
     - merge only allowed when pipeline succeeds
+  - Dockerfile
 - Zorg dat linting + tests altijd goed zijn
 
 ## uitnodiging

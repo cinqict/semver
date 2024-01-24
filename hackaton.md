@@ -13,7 +13,13 @@ Prep:
 - [x] Create go files
 - [x] Create structs
 - [ ] op cinq github
-- design: @Bouke hoe doen jullie developers dat?
+- [ ] slides?
+  - SemVer functional design
+  - Go
+    - GoLang
+      - GOROOT
+      - Code with me
+    - func
 
 ## Prep collega's
 

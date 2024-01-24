@@ -34,17 +34,17 @@ func ParseSemVer(versionStr string) (SemVer, error) {
 
 	major, err := strconv.Atoi(versionParts[0])
 	if err != nil {
-		return SemVer{}, fmt.Errorf("Failed to parse major verions: %v", err)
+		return SemVer{}, fmt.Errorf("Failed to parse major verions: %w", err)
 	}
 
 	minor, err := strconv.Atoi(versionParts[1])
 	if err != nil {
-		return SemVer{}, fmt.Errorf("Failed to parse major verions: %v", err)
+		return SemVer{}, fmt.Errorf("Failed to parse major verions: %w", err)
 	}
 
 	patch, err := strconv.Atoi(versionParts[2])
 	if err != nil {
-		return SemVer{}, fmt.Errorf("Failed to parse major verions: %v", err)
+		return SemVer{}, fmt.Errorf("Failed to parse major verions: %w", err)
 	}
 
 	return NewSemVer(major, minor, patch), nil

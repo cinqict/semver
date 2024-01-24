@@ -54,13 +54,13 @@ func TestParseSemVer(t *testing.T) {
 func TestParseSemVerSlice(t *testing.T) {
 	versions := []string{"1.2.3", "2.3.4"}
 	semvers, _ := ParseSemVerSlice(versions)
-	expectMajor := 1
-	expectMinor := 2
-	expectPatch := 3
+	expectMajor := 2
+	expectMinor := 3
+	expectPatch := 4
 
-	checkInt(t, expectMajor, semvers[0].Major)
-	checkInt(t, expectMinor, semvers[0].Minor)
-	checkInt(t, expectPatch, semvers[0].Patch)
+	checkInt(t, expectMajor, semvers[1].Major)
+	checkInt(t, expectMinor, semvers[1].Minor)
+	checkInt(t, expectPatch, semvers[1].Patch)
 
 	// ToDo:
 	// Add error cases

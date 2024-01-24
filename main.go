@@ -5,43 +5,29 @@ import (
 )
 
 func main() {
+	// Get repo
 	repo := GetRepo(".")
+
+	// Get all tags
 	allTags := GetAllTags(repo)
-	fmt.Printf("%v\n", allTags)
+	fmt.Println(allTags)
 
-	v := NewSemVer(1, 2, 0)
-	vv := v.String()
-	fmt.Printf("SemVer: %v\n", vv)
+	// SemVer to string
+	semver1 := NewSemVer(1, 2, 0)
+	version1 := semver1.String()
+	fmt.Printf("SemVer: %s\n", version1)
 
-	//// Gets the HEAD history from HEAD, just like this command:
-	//klog.Infoln("git log")
-	//
-	//// ... retrieves the branch pointed by HEAD
-	//// Get the HEAD reference
-	//ref, err := repo.Head()
-	//if err != nil {
-	//	log.Fatal(err)
-	//}
-	//
-	//// Retrieve the commit history starting from the HEAD reference
-	//commits, err := repo.Log(&git.LogOptions{
-	//	From: ref.Hash(),
-	//})
-	//if err != nil {
-	//	log.Fatal(err)
-	//}
-	//
-	//// Iterate over the commit history and print commit information
-	//err = commits.ForEach(func(commit *object.Commit) error {
-	//	fmt.Printf("Commit Hash: %s\n", commit.Hash)
-	//	fmt.Printf("Author: %s <%s>\n", commit.Author.Name, commit.Author.Email)
-	//	fmt.Printf("Date: %s\n", commit.Author.When)
-	//	fmt.Printf("Message: %s\n", commit.Message)
-	//	fmt.Println("")
-	//
-	//	return nil
-	//})
-	//if err != nil {
-	//	log.Fatal(err)
-	//}
+	// String to SemVer
+	version2 := "1.2.3"
+	semver2, err := ParseSemVer(version2)
+	CheckIfError(err)
+	fmt.Printf("SemVer major: %d, minor: %d, patch %d\n", semver2.Major, semver2.Minor, semver2.Patch)
+
+	// Array / slice of versions (allTags) to semver
+	// allTagsSemVer, err := ParseSemVerSlice(allTags)
+	// CheckIfError(err)
+	// for _, semver := range allTagsSemVer {
+	// 	fmt.Printf("SemVer major: %d, minor: %d, patch %d\n", semver.Major, semver.Minor, semver.Patch)
+	// }
+
 }

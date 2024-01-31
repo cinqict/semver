@@ -3,20 +3,20 @@
 
 ## Functional description
 
-- Get last semver/tag (default 0.0.0)
+- Get last/highest tag (default 0.0.0)
 - Determine new semver
-  - check branch name to determine new semver
+- on main
+  - check PR branch name to determine new semver
     - if `prefix=major/*`: major+1, minor=0, patch=0
     - if `prefix=minor/*`: minor+1, patch=0
-    - else patch+1
-- on main
-  - if PR merge, use new semver from PR branch
-  - else patch+1 (i.e. direct commit to master)
+  - else patch+1
 - on non main branch
   - tag = new semver + branchname + number of commits since last tag
 
-- Merge branch in main:
-  Use prefix to determine increase
+See diagram 
+
+![design](design.png)
+
 - Merge branch in branch:
   - patch into patch -> should work (just patch increase)
   - patch into minor -> should work (just minor increase)

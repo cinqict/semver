@@ -24,10 +24,10 @@ func main() {
 	fmt.Printf("SemVer major: %d, minor: %d, patch %d\n", semver2.Major, semver2.Minor, semver2.Patch)
 
 	// Array / slice of versions (allTags) to semver
-	// allTagsSemVer, err := ParseSemVerSlice(allTags)
-	// CheckIfError(err)
-	// for _, semver := range allTagsSemVer {
-	// 	fmt.Printf("SemVer major: %d, minor: %d, patch %d\n", semver.Major, semver.Minor, semver.Patch)
-	// }
+	allTagsSemVer, err := ParseSemVerSlice(allTags)
+	CheckIfError(err)
+	for _, semver := range allTagsSemVer {
+		fmt.Printf("SemVer major: %d, minor: %d, patch %d\n", semver.Major, semver.Minor, semver.Patch)
+	}
 
 }

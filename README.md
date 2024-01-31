@@ -9,13 +9,23 @@
 go test
 
 # Linting
-golangci-lint run # Golang lint tool: https://github.com/golangci/golangci-lint 
+golangci-lint run # Golang lint tool: https://github.com/golangci/golangci-lint
+# or run linting in docker
+docker run --rm -v $(pwd):/app -w /app docker/golangci-lint:1.55.1-go1.21.6 golangci-lint run # Workaround: docker/golangci-lint:1.55.1-go1.21.6 image fixes golangci/golangci-lint:v1.55 old version issue
 
 ```
 
+### Dev Run
+
+```shell
+go run .
+```
+
+
+### Update dependecies
+
 ```shell
 go mod tidy
-go run semver.go
 ```
 
 ### Build
@@ -25,19 +35,4 @@ go build
 go install
 
 ```
-
-## ToDo
-
-- [ ] log
-- [x] current branch
-- [x] tags
-- [ ] count commits
-- [x] latest tag
-- [ ] commits since tag
-- [ ] unit tests
-- [x] use git module
-  - [x] show git log
-- [ ] make it a cli with `github.com/urfave/cli/v2`
-- [x] golinting
-
 

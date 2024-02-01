@@ -6,38 +6,37 @@
 - Get last/highest tag (default 0.0.0)
 - Determine new semver
 - on main
-  - check PR branch name to determine new semver
-    - if `prefix=major/*`: major+1, minor=0, patch=0
-    - if `prefix=minor/*`: minor+1, patch=0
-  - else patch+1
+  - get last/highest tag without suffix
+  - calculate semver:
+    - check suffix of intermediate tags
+      - if `suffix=major/*`: major+1, minor=0, patch=0
+      - if `suffix=minor/*`: minor+1, patch=0
+    - else patch+1 (both other suffix or single commit)
 - on non main branch
-  - tag = new semver + branchname + number of commits since last tag
+  - get last/highest tag without suffix
+  - get branch name
+  - calculate semver
+  - get # commits since last/highest tag
+  - new tag = new semver + branch name + #commits
 
 See diagram 
 
 ![design](design.png)
 
-- Merge branch in branch:
-  - patch into patch -> should work (just patch increase)
-  - patch into minor -> should work (just minor increase)
-  - more general: "smaller or equal" into "bigger or equal" -> should work (just "bigger" increase)
-  - unusual: bigger into smaller -> this will result into "smaller" increase. Do we want that?  
 - Merge main in branch:
   This should work. There is possibly a new lastTag/baseTag, prefix/branch stays the same, commit count may change.
+- Merge branch in branch:
+  Just recalculate branch name should do it
 
-### Examples
-
-- direct commit to main without tags -> tag = 0.0.1
-- third commit on a branch `fix/foo` with last tag 1.0.2 -> tag = 1.0.3-fix-foo-3
-- merge this branch into master -> tag = 1.0.3
-- merge this branch into master, but last tag already changed to 1.0.4 -> tag 1.0.5
-- second commit on branch `major/bar` with last tag 3.4.8 -> tag = 4.0.0-major-bar-2
-- merge this branch into master -> tag = 4.0.0
+![branch-in-branch](branch-in-branch.png)
 
 ## Features
 
-- Determine SemVer
-- Determine Tag
+- Get highest/latest tag
+  (without suffix)
+- Get branch name
+  - Check default branch
+- Generate SemVer
 - Set tag
 
 ### Functions

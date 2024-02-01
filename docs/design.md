@@ -30,39 +30,21 @@ See diagram
 
 ![branch-in-branch](branch-in-branch.png)
 
-## Features
-
-- Get highest/latest tag
-  (without suffix)
-- Get branch name
-  - Check default branch
-- Generate SemVer
-- Set tag
-
 ### Functions
 
-- GetLatestTag(repo) string
-- StringToSemver(string) Semver
-  - VerifySemver(string) bool
+- SemVer struc: add branchName string, commitNumber int
+  (Of BranchSemVer) → Thijs
+- AllTagsInBranch(repo, branch) []string → Christian
+- ParseSemVer([]string) []semver → DONE
+- HighestVersion([]semver) semver → Thijs
+  - compare(v1, v2 semver) bool
+    slice.sort([]semver, compare(i,j))
+- (version *SemVer) IncreaseMajor() → Ton
+  - (version *SemVer) IncreaseMinor()
+  - (version *SemVer) IncreasePatch()
 - GetBranchName(repo) string
-- GetSemverIncrease(branchname string) string # one of major, minor, patch
-
-### functions sketch
-
-- getCurrentBranch(repo) string
-- getDefaultBranch(repo) string
-- getCurrentCommit(repo) commit
-- getParrentCommitInMain(?) commit
-- semverIncrement(branchname) semver
-- getLatestSemverTag(commit) semver
-- countCommitsSince(commit) int
-- newTag(tag_current, tag_increment, currentBranch, commitCount) string
-- setTag(tag_new)
-
-## Structs
-
-- Semver = (major int, minor int, patch int) # int or string?
-  - add 4e element: (suffix string)?
+- CountCommits(tag) int → Eric
+- GenerateBranchTag(version semver, branchName string, )
 
 
 

@@ -29,5 +29,4 @@ func main() {
 	for _, semver := range allTagsSemVer {
 		fmt.Printf("SemVer major: %d, minor: %d, patch %d\n", semver.Major, semver.Minor, semver.Patch)
 	}
-
 }

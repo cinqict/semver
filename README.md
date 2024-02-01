@@ -36,3 +36,6 @@ go install
 
 ```
 
+## Design
+
+See [design](./docs/design.md)

@@ -19,9 +19,14 @@
   - get # commits since last/highest tag
   - new tag = new semver + branch name + #commits
 
-See diagram 
+See diagram for patch increase:
 
-![design](design.png)
+![patch](patch.png)
+
+See diagram for minor (major is similar) increase:
+
+![minor](minor.png)
+
 
 - Merge main in branch:
   This should work. There is possibly a new lastTag/baseTag, prefix/branch stays the same, commit count may change.

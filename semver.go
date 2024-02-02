@@ -27,16 +27,31 @@ func NewSemVer(major, minor, patch int) SemVer {
 	}
 }
 
-func (me *SemVer) CompareTo(other SemVer) bool {
-	if me.Major != other.Major {
-		return me.Major > other.Major
+func (semver *SemVer) CompareTo(other SemVer) bool {
+	if semver.Major != other.Major {
+		return semver.Major > other.Major
 	}
 
-	if me.Minor != other.Minor {
-		return me.Minor > other.Minor
+	if semver.Minor != other.Minor {
+		return semver.Minor > other.Minor
 	}
 
-	return me.Patch > other.Patch
+	return semver.Patch > other.Patch
+}
+
+func (semver *SemVer) IncreaseMajor() {
+	semver.Major += 1
+	semver.Minor = 0
+	semver.Patch = 0
+}
+
+func (semver *SemVer) IncreaseMinor() {
+	semver.Minor += 1
+	semver.Patch = 0
+}
+
+func (semver *SemVer) IncreasePatch() {
+	semver.Patch += 1
 }
 
 func NewBranchedSemVer(major int, minor int, patch int, branch string, commit int) BranchedSemVer {
@@ -51,8 +66,8 @@ func NewBranchedSemVer(major int, minor int, patch int, branch string, commit in
 	}
 }
 
-func (version SemVer) String() string {
-	return fmt.Sprintf("%d.%d.%d", version.Major, version.Minor, version.Patch)
+func (semver SemVer) String() string {
+	return fmt.Sprintf("%d.%d.%d", semver.Major, semver.Minor, semver.Patch)
 }
 
 func ParseSemVer(versionStr string) (SemVer, error) {
@@ -97,6 +112,5 @@ func GetHighestSemVerFromSlice(versions []SemVer) SemVer {
 	sort.Slice(versions[:], func(i, j int) bool {
 		return versions[i].CompareTo(versions[j])
 	})
-
-	return SemVer{}
+	return versions[0]
 }

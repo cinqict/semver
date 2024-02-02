@@ -12,16 +12,16 @@ func main() {
 	allTags := GetAllTags(repo)
 	fmt.Println(allTags)
 
-	// SemVer to string
-	semver1 := NewSemVer(1, 2, 0)
-	version1 := semver1.String()
-	fmt.Printf("SemVer: %s\n", version1)
-
-	// String to SemVer
-	version2 := "1.2.3"
-	semver2, err := ParseSemVer(version2)
-	CheckIfError(err)
-	fmt.Printf("SemVer major: %d, minor: %d, patch %d\n", semver2.Major, semver2.Minor, semver2.Patch)
+	//// SemVer to string
+	//semver1 := NewSemVer(1, 2, 0)
+	//version1 := semver1.String()
+	//fmt.Printf("SemVer: %s\n", version1)
+	//
+	//// String to SemVer
+	//version2 := "1.2.3"
+	//semver2, err := ParseSemVer(version2)
+	//CheckIfError(err)
+	//fmt.Printf("SemVer major: %d, minor: %d, patch %d\n", semver2.Major, semver2.Minor, semver2.Patch)
 
 	// Array / slice of versions (allTags) to semver
 	allTagsSemVer, err := ParseSemVerSlice(allTags)
@@ -30,4 +30,10 @@ func main() {
 		fmt.Printf("SemVer major: %d, minor: %d, patch %d\n", semver.Major, semver.Minor, semver.Patch)
 	}
 
+	highest := GetHighestSemVerFromSlice(allTagsSemVer)
+	fmt.Println(highest)
+
+	highest.IncreaseMinor()
+
+	fmt.Println(highest)
 }

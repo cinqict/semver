@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"sort"
 	"strconv"
@@ -108,9 +109,12 @@ func ParseSemVerSlice(versions []string) ([]SemVer, error) {
 	return parsedSemVers, nil
 }
 
-func GetHighestSemVerFromSlice(versions []SemVer) SemVer {
-	sort.Slice(versions[:], func(i, j int) bool {
-		return versions[i].CompareTo(versions[j])
-	})
-	return versions[0]
+func GetHighestSemVerFromSlice(versions []SemVer) (SemVer, error) {
+	if len(versions) > 0 {
+		sort.Slice(versions[:], func(i, j int) bool {
+			return versions[i].CompareTo(versions[j])
+		})
+		return versions[0], nil
+	}
+	return SemVer{}, errors.New("Cannot determine highest semver version on a empty array.")
 }

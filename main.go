@@ -30,7 +30,7 @@ func main() {
 		fmt.Printf("SemVer major: %d, minor: %d, patch %d\n", semver.Major, semver.Minor, semver.Patch)
 	}
 
-	highest := GetHighestSemVerFromSlice(allTagsSemVer)
+	highest, _ := GetHighestSemVerFromSlice(allTagsSemVer)
 	fmt.Println(highest)
 
 	highest.IncreaseMinor()

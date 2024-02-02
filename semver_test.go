@@ -65,3 +65,24 @@ func TestParseSemVerSlice(t *testing.T) {
 	// ToDo:
 	// Add error cases
 }
+
+func TestHighestSemVer(t *testing.T) {
+	versions := []string{"1.2.3", "2.3.4"}
+	semvers, _ := ParseSemVerSlice(versions)
+	expectMajor := 2
+	expectMinor := 3
+	expectPatch := 4
+
+	highest, _ := GetHighestSemVerFromSlice(semvers)
+
+	checkInt(t, expectMajor, highest.Major)
+	checkInt(t, expectMinor, highest.Minor)
+	checkInt(t, expectPatch, highest.Patch)
+
+	// Sorting an empty array
+	emptySemver := []SemVer{}
+	highest, error := GetHighestSemVerFromSlice(emptySemver)
+	if error == nil {
+		t.Errorf("Expect an empty array to raise an error")
+	}
+}
